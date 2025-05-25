@@ -23,4 +23,4 @@ jobs:
           pip install ccxt pandas ta requests
 
       - name: Run bot
-        run: python ema_bot.py  # Change this if your file has a different name
+        run: 12-21 ema strategy.py # Change this if your file has a different name
