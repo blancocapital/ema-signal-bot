@@ -7,7 +7,7 @@ from datetime import datetime
 # ==== Configuration ====
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1375263937335132190/smDvToD98xqTK8j9s-IjklZToNUByBZkVwgNfRrMVBKxBkfG78f9Rv7XUbERo0sp2V2i"
 TIMEFRAME = '12h'
-LIMIT = 100
+LIMIT = 1000
 
 # ==== Discord Sender ====
 def send_summary_to_discord(buys, sells):
@@ -15,7 +15,7 @@ def send_summary_to_discord(buys, sells):
 
     embed = {
         "title": "📈 12/21 EMA Crossover Signals",
-        "description": "Top 100 Binance USDT Pairs • 12H Timeframe",
+        "description": "Top 1000 Binance USDT Pairs • 12H Timeframe",
         "color": 0x1ABC9C,  # Teal color
         "fields": [
             {
@@ -63,7 +63,7 @@ def check_ema_signal(df):
     return None
 
 # ==== Get Top 1000 USDT Pairs ====
-def get_top_100_usdt_pairs(exchange):
+def get_top_1000_usdt_pairs(exchange):
     markets = exchange.load_markets()
     usdt_pairs = [symbol for symbol in markets if symbol.endswith('/USDT') and markets[symbol]['active']]
     return usdt_pairs[:1000]
@@ -71,7 +71,7 @@ def get_top_100_usdt_pairs(exchange):
 # ==== Runner ====
 def run_bot():
     exchange = ccxt.binance()
-    pairs = get_top_100_usdt_pairs(exchange)
+    pairs = get_top_1000_usdt_pairs(exchange)
 
     buys = []
     sells = []
