@@ -62,11 +62,11 @@ def check_ema_signal(df):
         return "SELL"
     return None
 
-# ==== Get Top 100 USDT Pairs ====
+# ==== Get Top 1000 USDT Pairs ====
 def get_top_100_usdt_pairs(exchange):
     markets = exchange.load_markets()
     usdt_pairs = [symbol for symbol in markets if symbol.endswith('/USDT') and markets[symbol]['active']]
-    return usdt_pairs[:100]
+    return usdt_pairs[:1000]
 
 # ==== Runner ====
 def run_bot():
